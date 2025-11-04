@@ -114,3 +114,32 @@ def signup_for_activity(activity_name: str, email: str):
         activity.setdefault("participants", []).append(email.strip())
 
     return {"message": f"Signed up {email} for {activity_name}"}
+
+
+@app.delete("/activities/{activity_name}/unregister")
+def unregister_from_activity(activity_name: str, email: str):
+    """Unregister a student from an activity"""
+    # Validate activity exists
+    if activity_name not in activities:
+        raise HTTPException(status_code=404, detail="Activity not found")
+
+    activity = activities[activity_name]
+
+    normalized_email = email.strip().lower()
+
+    with activities_lock:
+        participants = activity.get("participants", [])
+        # find index by case-insensitive match
+        idx = None
+        for i, p in enumerate(participants):
+            if p.strip().lower() == normalized_email:
+                idx = i
+                break
+
+        if idx is None:
+            raise HTTPException(status_code=404, detail="Student not found in activity")
+
+        # remove the participant
+        removed = participants.pop(idx)
+
+    return {"message": f"Unregistered {removed} from {activity_name}"}

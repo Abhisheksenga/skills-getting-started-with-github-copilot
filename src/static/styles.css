@@ -84,17 +84,35 @@ section h3 {
 }
 
 .participants-list {
-  list-style: disc inside;
-  margin: 0;
+  list-style: none; /* hide default bullets */
+  margin: 6px 0 0 0;
   padding-left: 0;
   font-size: 13px;
   color: #444;
 }
 
 .participants-list li {
-  padding: 4px 0;
+  padding: 6px 0;
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+/* delete button next to participant */
+.delete-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #c62828;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background: rgba(198, 40, 40, 0.08);
 }
 
 /* participant link */
