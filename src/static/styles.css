@@ -74,6 +74,66 @@ section h3 {
   margin-bottom: 8px;
 }
 
+/* New: participants list styling */
+.participants-title {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.participants-list {
+  list-style: none; /* hide default bullets */
+  margin: 6px 0 0 0;
+  padding-left: 0;
+  font-size: 13px;
+  color: #444;
+}
+
+.participants-list li {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* delete button next to participant */
+.delete-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #c62828;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background: rgba(198, 40, 40, 0.08);
+}
+
+/* participant link */
+.participants-list a {
+  color: #1a237e;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.participants-list a:hover {
+  color: #3949ab;
+  text-decoration: underline;
+}
+
+/* small note when there are no participants */
+.no-participants {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
