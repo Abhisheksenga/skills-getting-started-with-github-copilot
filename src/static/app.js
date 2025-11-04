@@ -20,11 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        // Build participants HTML (bulleted list or friendly message)
+        const participantsHtml = (details.participants && details.participants.length > 0)
+          ? `<div class="participants-section">
+              <div class="participants-title">Participants</div>
+              <ul class="participants-list">
+                ${details.participants.map(p => `<li><a href="mailto:${p}">${p}</a></li>`).join("")}
+              </ul>
+            </div>`
+          : `<div class="no-participants">No participants yet</div>`;
+
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          ${participantsHtml}
         `;
 
         activitiesList.appendChild(activityCard);
